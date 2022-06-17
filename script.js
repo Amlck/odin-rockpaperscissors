@@ -19,9 +19,12 @@ function playRound(com, user){
 let highscore = 0
 let userScore = 0
 let comScore = 0
-while(highscore < 5){
-    player = Number(prompt("Enter your choice(1 for scissors, two for rocks, 3 for paper)"))
-    now = playRound(computer(), player)
+const sci = document.querySelector('#scissors')
+const roc = document.querySelector('#rock')
+const pap = document.querySelector('#paper')
+const display = document.querySelector('.score')
+sci.addEventListener('click', () => {
+    now = playRound(computer(), 1)
     if ( now == "l"){
         comScore += 1
     }
@@ -30,7 +33,49 @@ while(highscore < 5){
     }
     if (userScore > highscore){highscore = userScore}
     if (comScore > highscore){highscore = comScore}
-    alert(`current score user:${userScore}, computer:${comScore}`)
-}
-if(userScore >= 5){alert("You win")}
-else{alert("You lose")}
+    display.innerHTML = `current score player:${userScore}, computer:${comScore}`
+    if(userScore >= 5){alert("You win") }
+    else if(comScore >= 5){alert("You lose")}
+})
+roc.addEventListener('click', () => {
+    now = playRound(computer(), 2)
+    if ( now == "l"){
+        comScore += 1
+    }
+    if (now == "w"){
+        userScore += 1
+    }
+    if (userScore > highscore){highscore = userScore}
+    if (comScore > highscore){highscore = comScore}
+    display.innerHTML = `current score player:${userScore}, computer:${comScore}`
+    if(userScore >= 5){alert("You win") }
+    else if(comScore >= 5){alert("You lose")}
+})
+pap.addEventListener('click', () => {
+    now = playRound(computer(), 3)
+    if ( now == "l"){
+        comScore += 1
+    }
+    if (now == "w"){
+        userScore += 1
+    }
+    if (userScore > highscore){highscore = userScore}
+    if (comScore > highscore){highscore = comScore}
+    display.innerHTML = `current score player:${userScore}, computer:${comScore}`
+    if(userScore >= 5){alert("You win") }
+    else if(comScore >= 5){alert("You lose")}
+})
+// while(highscore < 5){
+//     player = Number(prompt("Enter your choice(1 for scissors, two for rocks, 3 for paper)"))
+//     now = playRound(computer(), player)
+//     if ( now == "l"){
+//         comScore += 1
+//     }
+//     if (now == "w"){
+//         userScore += 1
+//     }
+//     if (userScore > highscore){highscore = userScore}
+//     if (comScore > highscore){highscore = comScore}
+//     alert(`current score user:${userScore}, computer:${comScore}`)
+// }
+
